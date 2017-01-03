@@ -19,9 +19,9 @@ void Paddle::update()
 		y = origin_y;
 		vel = 0;
 	}
-	else if (y + origin_y > 480)
+	else if (y + origin_y > SCREEN_HEIGHT)
 	{
-		y = 480 - origin_y;
+		y = SCREEN_HEIGHT - origin_y;
 		vel = 0;
 	}
 }
@@ -29,6 +29,6 @@ void Paddle::update()
 void Paddle::reset()
 {
 	x = 50;
-	y = 480 / 2;
+	y = SCREEN_HEIGHT / 2;
 	vel = 0;
 }

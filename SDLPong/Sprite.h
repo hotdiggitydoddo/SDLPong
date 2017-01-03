@@ -10,8 +10,6 @@ private:
 	SDL_Texture *texture = NULL;
 	SDL_Rect rect;
 
-	
-
 protected:
 	int width, height, origin_x, origin_y;
 

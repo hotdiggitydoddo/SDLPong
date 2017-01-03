@@ -1,10 +1,8 @@
 #include "Game.h"
-Game::Game() {}
 
 Game::~Game()
 {
-	delete(ball);
-	delete(p1_paddle);
+	delete(board);
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -51,12 +49,8 @@ bool Game::init()
 				}
 			}
 		}
-
-		ball = new Ball(640 / 2, 480 / 2, "./resources/ball.png", renderer);
-		ball->reset();
 		
-		p1_paddle = new Paddle(0, 0, "./resources/p1_paddle.png", renderer);
-		p1_paddle->reset();
+		board = new Board(renderer);
 
 		return true;
 	}
@@ -74,9 +68,7 @@ void Game::start()
 		while (SDL_PollEvent(&event) != 0)
 		{
 			if (event.type == SDL_QUIT)
-			{
 				is_running = false;
-			}
 		}
 
 		handle_input();
@@ -90,26 +82,21 @@ void Game::start()
 void Game::handle_input()
 {
 	const Uint8* state = SDL_GetKeyboardState(NULL);
-	p1_paddle->handle_input(state);
-
-	if (state[SDL_SCANCODE_SPACE])
-		ball->start(3);
+	
+	board->handle_input(state);
 }
 
 void Game::update()
 {
-	ball->update();
-	p1_paddle->update();
+	board->update();
 }
 
 void Game::draw()
 {
 	//clear screen
 	SDL_RenderClear(renderer);
-
 	//drawing here
-	ball->draw(renderer);
-	p1_paddle->draw(renderer);
+	board->draw(renderer);
 	//update screen
 	SDL_RenderPresent(renderer);
 }

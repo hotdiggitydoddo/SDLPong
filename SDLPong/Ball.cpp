@@ -6,9 +6,9 @@ void Ball::update()
 		return;
 
 	//keep ball within screen bounds for now
-	if ((x + origin_x + vel_x >= 640) || x - origin_x <= 0)
+	if ((x + origin_x + vel_x >= SCREEN_WIDTH) || x - origin_x <= 0)
 		vel_x *= -1;
-	if ((y + origin_y + vel_y >= 480) || y - origin_y <= 0)
+	if ((y + origin_y + vel_y >= SCREEN_HEIGHT) || y - origin_y <= 0)
 		vel_y *= -1;
 
 	x += vel_x;
@@ -17,8 +17,8 @@ void Ball::update()
 
 void Ball::reset()
 {
-	x = 640 / 2;
-	y = 480 / 2;
+	x = SCREEN_WIDTH / 2;
+	y = SCREEN_HEIGHT / 2;
 	vel_x = 0;
 	vel_y = 0;
 }

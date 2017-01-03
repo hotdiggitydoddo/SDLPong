@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Config.h"
 #include "Sprite.h"
 
 class Paddle : public Sprite
