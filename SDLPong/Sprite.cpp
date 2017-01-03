@@ -27,8 +27,8 @@ Sprite::Sprite(std::string path, SDL_Renderer *renderer)
 
 Sprite::Sprite(int x, int y, std::string path, SDL_Renderer* renderer) : Sprite(path, renderer)
 {
-	this->set_x(x);
-	this->set_y(y);
+	this->x = x;
+	this->y = y;
 }
 
 Sprite::~Sprite()
@@ -37,30 +37,7 @@ Sprite::~Sprite()
 	texture = NULL;
 }
 
-int Sprite::get_x()
-{
-	return x;
-}
-
-int Sprite::get_y()
-{
-	return y;
-}
-
-void Sprite::set_x(int val)
-{
-	this->x = val;
-}
-
-void Sprite::set_y(int val)
-{
-	this->y = val;
-}
-
-void Sprite::update()
-{
-
-}
+void Sprite::update() {}
 
 void Sprite::draw(SDL_Renderer *renderer)
 {

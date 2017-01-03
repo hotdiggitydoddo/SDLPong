@@ -4,6 +4,7 @@ Game::Game() {}
 Game::~Game()
 {
 	delete(ball);
+	delete(p1_paddle);
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -53,17 +54,20 @@ bool Game::init()
 
 		ball = new Ball(640 / 2, 480 / 2, "./resources/ball.png", renderer);
 		ball->reset();
-		ball->start(3);
+		
+		p1_paddle = new Paddle(0, 0, "./resources/p1_paddle.png", renderer);
+		p1_paddle->reset();
+
 		return true;
 	}
 }
 
 void Game::start()
 {
-	isRunning = true;
+	is_running = true;
 	SDL_Event event;
 
-	while (isRunning)
+	while (is_running)
 	{
 		Uint32 frame_time = SDL_GetTicks();
 
@@ -71,7 +75,7 @@ void Game::start()
 		{
 			if (event.type == SDL_QUIT)
 			{
-				isRunning = false;
+				is_running = false;
 			}
 		}
 
@@ -85,12 +89,17 @@ void Game::start()
 
 void Game::handle_input()
 {
+	const Uint8* state = SDL_GetKeyboardState(NULL);
+	p1_paddle->handle_input(state);
+
+	if (state[SDL_SCANCODE_SPACE])
+		ball->start(3);
 }
 
 void Game::update()
 {
 	ball->update();
-
+	p1_paddle->update();
 }
 
 void Game::draw()
@@ -100,7 +109,7 @@ void Game::draw()
 
 	//drawing here
 	ball->draw(renderer);
-
+	p1_paddle->draw(renderer);
 	//update screen
 	SDL_RenderPresent(renderer);
 }

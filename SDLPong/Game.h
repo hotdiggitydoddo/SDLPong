@@ -4,16 +4,18 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "Ball.h"
+#include "Paddle.h"
 
 class Game
 {
 private:
 	SDL_Window* window = NULL;
 	SDL_Renderer* renderer = NULL;
-	bool isRunning = false;
+	bool is_running = false;
 	void cap_framerate(Uint32 frame_time);
 
 	Ball* ball = NULL;
+	Paddle* p1_paddle = NULL;
 
 public:
 	const int SCREEN_WIDTH = 640;

@@ -10,7 +10,7 @@ private:
 	SDL_Texture *texture = NULL;
 	SDL_Rect rect;
 
-	int x, y;
+	
 
 protected:
 	int width, height, origin_x, origin_y;
@@ -21,9 +21,6 @@ public:
 	~Sprite();
 	virtual void update();
 	void draw(SDL_Renderer *renderer);
-	void set_x(int val);
-	void set_y(int val);
-	int get_x();
-	int get_y();
+	int x, y;
 };
 
