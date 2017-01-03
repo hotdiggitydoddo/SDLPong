@@ -1,10 +1,14 @@
-#include <SDL.h>
+#include "Game.h"
 
 int main(int argc, char** argv)
 {
-	SDL_Init(SDL_INIT_VIDEO);
+	Game pongGame;
 
-	SDL_Quit();
+	if (!pongGame.init())
+		return -1;
+
+	pongGame.start();
 
 	return 0;
+
 }
