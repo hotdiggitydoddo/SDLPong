@@ -13,4 +13,6 @@ public:
 	void handle_input(const Uint8* kb_state);
 	void update();
 	void reset();
+	int get_width();
+	int get_height();
 };

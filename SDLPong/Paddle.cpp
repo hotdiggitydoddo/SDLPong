@@ -28,7 +28,17 @@ void Paddle::update()
 
 void Paddle::reset()
 {
-	x = 50;
+	x = PADDLE_OFFSET;
 	y = SCREEN_HEIGHT / 2;
 	vel = 0;
+}
+
+int Paddle::get_width()
+{
+	return width;
+}
+
+int Paddle::get_height()
+{
+	return height;
 }

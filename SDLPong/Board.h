@@ -4,6 +4,8 @@
 #include "Ball.h"
 #include "Paddle.h"
 
+class Ball;
+
 class Board
 {
 public:
@@ -13,10 +15,9 @@ public:
 	void handle_input(const Uint8* kb_state);
 	void update();
 	void draw(SDL_Renderer* renderer);
+	void check_collision();
 
-private:
 	Ball* ball;
 	Paddle* p1_paddle;
-	//SDL_Renderer* renderer;
 };
 

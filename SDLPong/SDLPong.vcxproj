@@ -129,6 +129,7 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="intersection.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
